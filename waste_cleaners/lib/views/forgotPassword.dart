@@ -1,17 +1,20 @@
 import 'package:flutter/material.dart';
 
-class SignUp extends StatefulWidget {
- 
+class ForgotPassword extends StatefulWidget {
+  
 
   @override
-  _SignUpState createState() => _SignUpState();
+  _ForgotPasswordState createState() => _ForgotPasswordState();
 }
 
-class _SignUpState extends State<SignUp> {
+class _ForgotPasswordState extends State<ForgotPassword> {
   @override
   Widget build(BuildContext context) {
-    return   SafeArea(child:Container(
-          decoration: BoxDecoration(
+    return Container(
+         alignment: Alignment.center,
+        height: MediaQuery.of(context).size.height-50,
+        width: MediaQuery.of(context).size.width,
+         decoration: BoxDecoration(
                   boxShadow: [
                     BoxShadow(
                       color: Colors.black,
@@ -22,11 +25,6 @@ class _SignUpState extends State<SignUp> {
                   ],
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(25)),
-      height:MediaQuery.of(context).size.height-50,
-         child: Padding(
-           padding: const EdgeInsets.all(15.0),
-           child: Container(child: Text("signup")),
-         )),
     );
   }
 }
