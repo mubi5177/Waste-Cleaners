@@ -6,6 +6,7 @@ import 'package:waste_cleaners/services/auth_services.dart';
 import 'package:waste_cleaners/views/forgotPassword.dart';
 import 'package:waste_cleaners/views/signup.dart';
 import 'package:provider/provider.dart';
+import 'package:waste_cleaners/views/success.dart';
 
 class Login extends StatefulWidget {
   @override
@@ -35,70 +36,36 @@ class _LoginState extends State<Login> {
         ], color: Colors.white, borderRadius: BorderRadius.circular(25)),
         child: Padding(
           padding: const EdgeInsets.all(30.0),
-          child: Column(
-            children: [
-              SizedBox(
-                height: 20,
-              ),
-              Text(
-                "Welcome Back!",
-                style: TextStyle(
-                  fontSize: 25,
-                  fontWeight: FontWeight.bold,
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                SizedBox(
+                  height: 20,
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: 8.0),
-                child: Text(
-                  "Sign in to your account",
+                Text(
+                  "Welcome Back!",
                   style: TextStyle(
-                    fontSize: 15,
-                    color: Colors.grey.shade500,
+                    fontSize: 25,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
-              ),
-              SizedBox(
-                height: 100,
-              ),
-              Row(
-                children: [
-                  Text(
-                    "Email",
+                Padding(
+                  padding: const EdgeInsets.only(top: 8.0),
+                  child: Text(
+                    "Sign in to your account",
                     style: TextStyle(
                       fontSize: 15,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black,
-                    ),
-                  ),
-                ],
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: 12.0),
-                child: Container(
-                  decoration: BoxDecoration(
-                      color: Colors.grey.shade100,
-                      borderRadius: BorderRadius.circular(13)),
-                  alignment: Alignment.center,
-                  height: 60,
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: TextFormField(
-                      controller: emailController,
-                       
-                      decoration: InputDecoration(
-                        hintText: 'Enter your email',
-                        border: InputBorder.none,
-                      ),
+                      color: Colors.grey.shade500,
                     ),
                   ),
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: 10.0),
-                child: Row(
+                SizedBox(
+                  height: 100,
+                ),
+                Row(
                   children: [
                     Text(
-                      "Password",
+                      "Email",
                       style: TextStyle(
                         fontSize: 15,
                         fontWeight: FontWeight.bold,
@@ -107,157 +74,188 @@ class _LoginState extends State<Login> {
                     ),
                   ],
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: 12.0),
-                child: Container(
-                  decoration: BoxDecoration(
-                      color: Colors.grey.shade100,
-                      borderRadius: BorderRadius.circular(13)),
-                  alignment: Alignment.center,
-                  height: 60,
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: TextFormField(
-                      controller: passwordController,
-                      obscureText: true,
-                     
-                      decoration: InputDecoration(
-                        hintText: 'Enter your password',
-                        border: InputBorder.none,
+                Padding(
+                  padding: const EdgeInsets.only(top: 12.0),
+                  child: Container(
+                    decoration: BoxDecoration(
+                        color: Colors.grey.shade100,
+                        borderRadius: BorderRadius.circular(13)),
+                    alignment: Alignment.center,
+                    height: 60,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: TextFormField(
+                        controller: emailController,
+                         
+                        decoration: InputDecoration(
+                          hintText: 'Enter your email',
+                          border: InputBorder.none,
+                        ),
                       ),
                     ),
                   ),
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: 20.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    InkWell(
-                      onTap: () {
-                        showModalBottomSheet(
-                          context: context,
-                          isScrollControlled: true,
-                          backgroundColor: Colors.transparent,
-                          builder: (context) {
-                            return ForgotPassword();
-                          },
-                        );
-                      },
-                      child: Text(
-                        "Forgot Password?",
-                        style: TextStyle(color: Colors.grey.shade500),
+                Padding(
+                  padding: const EdgeInsets.only(top: 10.0),
+                  child: Row(
+                    children: [
+                      Text(
+                        "Password",
+                        style: TextStyle(
+                          fontSize: 15,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black,
+                        ),
                       ),
-                    )
-                  ],
+                    ],
+                  ),
                 ),
-              ),
-              SizedBox(height: 30),
-              ElevatedButton(
-                  onPressed: () async {
-                   final String email = emailController.text.trim();
-                    final String  password = passwordController.text.trim();
-
-                    if (email.isEmpty) {
-                      print("Email is Empty");
-                    } else {
-                      if (password.isEmpty) {
-                        print("Password is Empty");
-                      } else {
-                        context.read<AuthService>().login(
-                              email,
-                              password,
-                            );
-                      }
-                    }
-                    //             Navigator.push(
-                    // context,
-                    // MaterialPageRoute(builder: (context) => SuccessScreen()),
-                    // );
-
-                    //  setState(() {
-                    //                     showSpinner = true;
-                    //                   });
-                    //                   try {
-                    //                     final user = await _auth.signInWithEmailAndPassword(
-                    //                         email: email, password: password);
-                    //                     if (user != null) {
-                    //                       Navigator.push(
-                    //                           context,
-                    //                           MaterialPageRoute(
-                    //                               builder: (context) => SuccessScreen()));
-                    //                     } else {
-                    //                        AlertDialog(
-                    //                           title: const Text('AlertDialog Title'),
-                    //                           content: const Text('AlertDialog description'),
-                    //                           actions: <Widget>[
-                    //                             TextButton(
-                    //                               onPressed: () =>
-                    //                                   Navigator.pop(context, 'Cancel'),
-                    //                               child: const Text('Cancel'),
-                    //                             ),
-                    //                             TextButton(
-                    //                               onPressed: () =>
-                    //                                   Navigator.pop(context, 'OK'),
-                    //                               child: const Text('OK'),
-                    //                             ),
-                    //                           ],
-                    //                         );
-                    //                       setState(() {
-                    //                       showSpinner = false;
-                    //                     });
-                    //                     }
-
-                    //                   } catch (e) {
-                    //                     print(e);
-                    //                   }
-                  },
-                  clipBehavior: Clip.hardEdge,
+                Padding(
+                  padding: const EdgeInsets.only(top: 12.0),
                   child: Container(
-                    decoration:
-                        BoxDecoration(borderRadius: BorderRadius.circular(20)),
+                    decoration: BoxDecoration(
+                        color: Colors.grey.shade100,
+                        borderRadius: BorderRadius.circular(13)),
                     alignment: Alignment.center,
                     height: 60,
-                    width: 280,
-                    child: Text("Sign In"),
-                  )),
-              SizedBox(
-                height: 100,
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: 50.0),
-                child: Text.rich(
-                  TextSpan(
-                    text: '', // default text style
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: TextFormField(
+                        controller: passwordController,
+                        obscureText: true,
+                       
+                        decoration: InputDecoration(
+                          hintText: 'Enter your password',
+                          border: InputBorder.none,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 20.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      TextSpan(
-                          text: "Don't have an account?",
-                          style: TextStyle(fontSize: 15)),
-                      WidgetSpan(
-                          child: InkWell(
+                      InkWell(
                         onTap: () {
                           showModalBottomSheet(
                             context: context,
                             isScrollControlled: true,
                             backgroundColor: Colors.transparent,
                             builder: (context) {
-                              return SignUp();
+                              return ForgotPassword();
                             },
                           );
                         },
-                        child: Text('Sign Up',
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 15,
-                                color: Colors.green)),
-                      )),
+                        child: Text(
+                          "Forgot Password?",
+                          style: TextStyle(color: Colors.grey.shade500),
+                        ),
+                      )
                     ],
                   ),
                 ),
-              )
-            ],
+                SizedBox(height: 30),
+                ElevatedButton(
+                    onPressed: () async {
+                     final String email = emailController.text.trim();
+                      final String  password = passwordController.text.trim();
+          
+                      // context.read<AuthService>().login(
+                      //   email,
+                      //   password,
+                      // );
+                      //             Navigator.push(
+                      // context,
+                      // MaterialPageRoute(builder: (context) => SuccessScreen()),
+                      // );
+          
+                       setState(() {
+                                          showSpinner = true;
+                                        });
+                                        try {
+                                          final user = await _auth.signInWithEmailAndPassword(
+                                              email: email, password: password);
+                                              
+                                          if (user != null) {
+                                            Navigator.push(
+                                                context,
+                                                MaterialPageRoute(
+                                                    builder: (context) => SuccessScreen()));
+                                          } else {
+                                             AlertDialog(
+                                                title: const Text('AlertDialog Title'),
+                                                content: const Text('AlertDialog description'),
+                                                actions: <Widget>[
+                                                  TextButton(
+                                                    onPressed: () =>
+                                                        Navigator.pop(context, 'Cancel'),
+                                                    child: const Text('Cancel'),
+                                                  ),
+                                                  TextButton(
+                                                    onPressed: () =>
+                                                        Navigator.pop(context, 'OK'),
+                                                    child: const Text('OK'),
+                                                  ),
+                                                ],
+                                              );
+                                         
+                                          }
+                                          
+                                             setState(() {
+                                            showSpinner = false;
+                                          });
+          
+                                        }on FirebaseAuthException catch (e) {
+                                          print(e.message);
+                                        }
+                    },
+                    clipBehavior: Clip.hardEdge,
+                    child: Container(
+                      decoration:
+                          BoxDecoration(borderRadius: BorderRadius.circular(20)),
+                      alignment: Alignment.center,
+                      height: 60,
+                      width: 280,
+                      child: Text("Sign In"),
+                    )),
+                SizedBox(
+                  height: 100,
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 50.0),
+                  child: Text.rich(
+                    TextSpan(
+                      text: '', // default text style
+                      children: [
+                        TextSpan(
+                            text: "Don't have an account?",
+                            style: TextStyle(fontSize: 15)),
+                        WidgetSpan(
+                            child: InkWell(
+                          onTap: () {
+                            showModalBottomSheet(
+                              context: context,
+                              isScrollControlled: true,
+                              backgroundColor: Colors.transparent,
+                              builder: (context) {
+                                return SignUp();
+                              },
+                            );
+                          },
+                          child: Text('Sign Up',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 15,
+                                  color: Colors.green)),
+                        )),
+                      ],
+                    ),
+                  ),
+                )
+              ],
+            ),
           ),
         ),
       ),

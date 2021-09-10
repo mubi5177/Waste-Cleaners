@@ -1,6 +1,10 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:confetti/confetti.dart';
 import 'dart:math';
+
+import 'package:waste_cleaners/views/welcome.dart';
 
 class SuccessScreen extends StatefulWidget {
   @override
@@ -8,6 +12,7 @@ class SuccessScreen extends StatefulWidget {
 }
 
 class _SuccessScreenState extends State<SuccessScreen> {
+   final _auth = FirebaseAuth.instance;
   ConfettiController _controllerBottomCenter;
 
   @override
@@ -77,11 +82,13 @@ class _SuccessScreenState extends State<SuccessScreen> {
               child: Image.asset('assets/gif/giphy.gif')),
                  SizedBox(height: 30),
             ElevatedButton(
-                onPressed: () {
-  //                  Navigator.push(
-  //   context,
-  //   MaterialPageRoute(builder: (context) => SuccessScreen()),
-  // );
+                onPressed: ()async{
+              await FirebaseAuth.instance.signOut();
+                  
+                   Navigator.push(
+    context,
+    MaterialPageRoute(builder: (context) => Welcome()),
+  );
                 },
                 clipBehavior: Clip.hardEdge,
                 child: Container(

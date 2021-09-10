@@ -6,14 +6,14 @@ class AuthService {
 
   AuthService(this._auth);
 
-  Stream<User> get authStateChanges => _auth.idTokenChanges();
+  Stream<User> get authStateChanges => _auth.authStateChanges();
 
   Future<String> login(String email, String password) async {
     try{
       await _auth.signInWithEmailAndPassword(email: email, password: password);
       return "Logged In";
-    } catch(e) {
-      return e;
+    } on FirebaseAuthException catch(e) {
+      return e.message;
     }
   }
 
