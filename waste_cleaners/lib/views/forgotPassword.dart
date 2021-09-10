@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-class ForgotPassword extends StatefulWidget {
-  
+import 'package:waste_cleaners/views/signup.dart';
 
+class ForgotPassword extends StatefulWidget {
   @override
   _ForgotPasswordState createState() => _ForgotPasswordState();
 }
@@ -10,8 +10,8 @@ class ForgotPassword extends StatefulWidget {
 class _ForgotPasswordState extends State<ForgotPassword> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-         alignment: Alignment.center,
+    return   Container(
+      alignment: Alignment.center,
         height: MediaQuery.of(context).size.height-50,
         width: MediaQuery.of(context).size.width,
          decoration: BoxDecoration(
@@ -25,6 +25,80 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                   ],
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(25)),
-    );
+        child: Padding(
+          padding: const EdgeInsets.all(30.0),
+          child: Column(
+      children: [
+        SizedBox(height: 20,),
+        Text("Forgot Password",style: TextStyle(
+          fontSize:25,
+          fontWeight:FontWeight.bold,
+        ),),
+        Padding(
+          padding: const EdgeInsets.only(top:8.0,left:20),
+          child: Text("Enter your email and we will send you instructions how to reset the password",style: TextStyle(
+            fontSize:15,
+            color: Colors.grey.shade500,
+          ),),
+        ),
+        SizedBox(
+          height: 50,
+        ),
+        Row(children: [
+          Text("Email",style: TextStyle(
+            fontSize:15,
+            fontWeight: FontWeight.bold,
+            color: Colors.black,
+          ),),
+        ],),
+
+        Padding(
+          padding: const EdgeInsets.only(top:12.0),
+          child: Container(
+            decoration: BoxDecoration(
+color: Colors.grey.shade100,
+borderRadius: BorderRadius.circular(13)
+            
+            ),
+            alignment: Alignment.center,
+            
+            height: 60,
+
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: TextField(
+                    onChanged: (value) {
+                      //Do something with the user input.
+                    },
+                    decoration: InputDecoration(
+                      hintText: 'Enter your email',
+                         border: InputBorder.none,
+                    ),
+                  ),
+            ),
+          ),
+        ),
+          
+  SizedBox(height: 30),
+                    ElevatedButton(
+                        onPressed: () {
+               
+                        },
+                        clipBehavior: Clip.hardEdge,
+                        child: Container(
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(20)),
+                          alignment: Alignment.center,
+                          height: 60,
+                          width: 280,
+                          child: Text("Submit"),
+                        )),
+                        
+          
+      ],
+          ),
+        ),
+      );
+     
   }
 }
