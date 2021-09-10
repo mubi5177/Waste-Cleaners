@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "399258176081",
+    "project_id": "wastecleaners-6654c",
+    "storage_bucket": "wastecleaners-6654c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:399258176081:android:874e20666f920fea0e0670",
+        "android_client_info": {
+          "package_name": "com.example.waste_cleaners"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "399258176081-1mkjkttc8gav284bt85uen6np603cgvg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyASIMKtvkuDJgMMoazTAPoDIwaXAE-vqJY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "399258176081-1mkjkttc8gav284bt85uen6np603cgvg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
