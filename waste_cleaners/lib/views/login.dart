@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:waste_cleaners/views/forgotPassword.dart';
+import 'package:waste_cleaners/views/signup.dart';
 
 class Login extends StatefulWidget {
   @override
@@ -159,6 +160,40 @@ Padding(
                           width: 280,
                           child: Text("Sign In"),
                         )),
+                        SizedBox(
+                          height: 100,
+                        ),
+                            Padding(
+                      padding: const EdgeInsets.only(top: 50.0),
+                      child: Text.rich(
+                        TextSpan(
+                          text: '', // default text style
+                          children: [
+                            TextSpan(
+                                text: "Don't have an account?",
+                                style: TextStyle(fontSize: 15)),
+                            WidgetSpan(
+                                child: InkWell(
+                              onTap: () {
+                                 showModalBottomSheet(
+                    context: context,
+                    isScrollControlled: true,
+                    backgroundColor: Colors.transparent,
+                    builder: (context) {
+                      return SignUp();
+                    },
+                  );
+                              },
+                              child: Text('Sign Up',
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 15,
+                                      color: Colors.green)),
+                            )),
+                          ],
+                        ),
+                      ),
+                    )
           
       ],
           ),
