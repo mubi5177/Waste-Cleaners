@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:waste_cleaners/views/forgotPassword.dart';
 import 'package:waste_cleaners/views/signup.dart';
+import 'package:waste_cleaners/views/success.dart';
 
 class Login extends StatefulWidget {
   @override
@@ -149,7 +150,10 @@ Padding(
   SizedBox(height: 30),
                     ElevatedButton(
                         onPressed: () {
-               
+                Navigator.push(
+    context,
+    MaterialPageRoute(builder: (context) => SuccessScreen()),
+  );
                         },
                         clipBehavior: Clip.hardEdge,
                         child: Container(

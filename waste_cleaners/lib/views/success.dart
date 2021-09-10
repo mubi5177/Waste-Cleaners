@@ -55,8 +55,8 @@ class _SuccessScreenState extends State<SuccessScreen> {
             padding: const EdgeInsets.all(12.0),
             child: Text('Congratulations,',
               style: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.w600,
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold,
                   fontSize: 27
               ),
             ),
@@ -65,8 +65,8 @@ class _SuccessScreenState extends State<SuccessScreen> {
             padding: const EdgeInsets.all(8.0),
             child: Text('You have logged in.',
               style: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.w600,
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold,
                   fontSize: 23
               ),
             ),
@@ -75,6 +75,23 @@ class _SuccessScreenState extends State<SuccessScreen> {
               height: 200,
               width: 200,
               child: Image.asset('assets/gif/giphy.gif')),
+                 SizedBox(height: 30),
+            ElevatedButton(
+                onPressed: () {
+  //                  Navigator.push(
+  //   context,
+  //   MaterialPageRoute(builder: (context) => SuccessScreen()),
+  // );
+                },
+                clipBehavior: Clip.hardEdge,
+                child: Container(
+                  decoration:
+                      BoxDecoration(borderRadius: BorderRadius.circular(20)),
+                  alignment: Alignment.center,
+                  height: 60,
+                  width: 280,
+                  child: Text("Let's Roll!"),
+                )),
         ],
       ),
     );
