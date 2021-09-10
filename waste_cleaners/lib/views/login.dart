@@ -1,4 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
@@ -6,7 +5,6 @@ import 'package:waste_cleaners/controller/controllers.dart';
 import 'package:waste_cleaners/services/auth_services.dart';
 import 'package:waste_cleaners/views/forgotPassword.dart';
 import 'package:waste_cleaners/views/signup.dart';
-import 'package:waste_cleaners/views/success.dart';
 import 'package:provider/provider.dart';
 
 class Login extends StatefulWidget {
@@ -17,8 +15,7 @@ class Login extends StatefulWidget {
 class _LoginState extends State<Login> {
   bool showSpinner = false;
   final _auth = FirebaseAuth.instance;
-  String email;
-  String password;
+ 
 
   @override
   Widget build(BuildContext context) {
@@ -85,11 +82,9 @@ class _LoginState extends State<Login> {
                   height: 60,
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: TextField(
+                    child: TextFormField(
                       controller: emailController,
-                      onChanged: (value) {
-                        email = value;
-                      },
+                       
                       decoration: InputDecoration(
                         hintText: 'Enter your email',
                         border: InputBorder.none,
@@ -123,12 +118,10 @@ class _LoginState extends State<Login> {
                   height: 60,
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: TextField(
+                    child: TextFormField(
                       controller: passwordController,
                       obscureText: true,
-                      onChanged: (value) {
-                        password = value;
-                      },
+                     
                       decoration: InputDecoration(
                         hintText: 'Enter your password',
                         border: InputBorder.none,
@@ -164,8 +157,8 @@ class _LoginState extends State<Login> {
               SizedBox(height: 30),
               ElevatedButton(
                   onPressed: () async {
-                     email = emailController.text.trim();
-                     password = passwordController.text.trim();
+                   final String email = emailController.text.trim();
+                    final String  password = passwordController.text.trim();
 
                     if (email.isEmpty) {
                       print("Email is Empty");

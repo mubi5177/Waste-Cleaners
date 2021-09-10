@@ -4,9 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 import 'package:waste_cleaners/controller/controllers.dart';
 import 'package:waste_cleaners/services/auth_services.dart';
-import 'package:waste_cleaners/views/forgotPassword.dart';
 import 'package:waste_cleaners/views/login.dart';
-import 'package:waste_cleaners/views/success.dart';
 import 'package:provider/provider.dart';
 
 class SignUp extends StatefulWidget {
@@ -15,17 +13,13 @@ class SignUp extends StatefulWidget {
 }
 
 class _SignUpState extends State<SignUp> {
-    bool showSpinner = false;
+  bool showSpinner = false;
   final _auth = FirebaseAuth.instance;
-  String email;
-  String password;
-  String firstName;
-  String lastName;
 
   @override
   Widget build(BuildContext context) {
     return ModalProgressHUD(
-       inAsyncCall: showSpinner,
+      inAsyncCall: showSpinner,
       child: Container(
         alignment: Alignment.center,
         height: MediaQuery.of(context).size.height - 50,
@@ -87,10 +81,7 @@ class _SignUpState extends State<SignUp> {
                   height: 60,
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: TextField(
-                      onChanged: (value) {
-                        firstName=value;
-                      },
+                    child: TextFormField(
                       decoration: InputDecoration(
                         hintText: 'Enter your first name',
                         border: InputBorder.none,
@@ -124,10 +115,7 @@ class _SignUpState extends State<SignUp> {
                   height: 60,
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: TextField(
-                      onChanged: (value) {
-                       lastName=value;
-                      },
+                    child: TextFormField(
                       decoration: InputDecoration(
                         hintText: 'Enter your last name',
                         border: InputBorder.none,
@@ -158,10 +146,7 @@ class _SignUpState extends State<SignUp> {
                   height: 60,
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: TextField(
-                      onChanged: (value) {
-                      email=value;
-                      },
+                    child: TextFormField(
                       decoration: InputDecoration(
                         hintText: 'Enter your email',
                         border: InputBorder.none,
@@ -195,10 +180,7 @@ class _SignUpState extends State<SignUp> {
                   height: 60,
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: TextField(
-                      onChanged: (value) {
-                    password=value;
-                      },
+                    child: TextFormField(
                       decoration: InputDecoration(
                         hintText: 'Enter your password',
                         border: InputBorder.none,
@@ -216,7 +198,7 @@ class _SignUpState extends State<SignUp> {
                       TextSpan(
                           text: "By signing up,I agree to the ",
                           style: TextStyle(fontSize: 15)),
-                        WidgetSpan(
+                      WidgetSpan(
                           child: InkWell(
                         onTap: () {},
                         child: Text('Term of use',
@@ -241,58 +223,64 @@ class _SignUpState extends State<SignUp> {
               ),
               SizedBox(height: 30),
               ElevatedButton(
-                  onPressed: () async{
-                    firstName = firstNameController.text.trim();
-                   lastName = lastNameController.text.trim();
-                  email = emailController.text.trim();
-                   password = passwordController.text.trim();
+                  onPressed: () async {
+                    final String firstName = firstNameController.text.trim();
+                    final String lastName = lastNameController.text.trim();
+                    final String email = emailController.text.trim();
+                    final String password = passwordController.text.trim();
 
-                  if(email.isEmpty){
-                    print("Email is Empty");
-                  } else {
-                    if(password.isEmpty){
-                      print("Password is Empty");
+                    if (email.isEmpty) {
+                      print("Email is Empty");
                     } else {
-                      context.read<AuthService>().signUp(
-                        firstName,
-                        lastName,
-                        email,
-                        password,
-                      ).then((value) async {
-                        User user = FirebaseAuth.instance.currentUser;
+                      if (password.isEmpty) {
+                        print("Password is Empty");
+                      } else {
+                        context
+                            .read<AuthService>()
+                            .signUp(
+                              firstName,
+                              lastName,
+                              email,
+                              password,
+                            )
+                            .then((value) async {
+                          User user = FirebaseAuth.instance.currentUser;
 
-                        await FirebaseFirestore.instance.collection("users").doc(user.uid).set({
-                          'uid': user.uid,
-                          'email': email,
-                          'password': password,
+                          await FirebaseFirestore.instance
+                              .collection("users")
+                              .doc(user.uid)
+                              .set({
+                            'uid': user.uid,
+                            'email': email,
+                            'password': password,
+                          });
                         });
-                      });
+                      }
                     }
-                  }
-      //                Navigator.push(
-      // context,
-      // MaterialPageRoute(builder: (context) => SuccessScreen()),
-      // );
-        //  setState(() {
-        //                 showSpinner = true;
-        //               });
-        //               try {
-        //                 final newUser =
-        //                 await _auth.createUserWithEmailAndPassword(
-        //                     email: email, password: password);
-        //                 if (newUser != null) {
-        //                   Navigator.push(
-        //                       context,
-        //                       MaterialPageRoute(
-        //                           builder: (context) => SuccessScreen()));
-        //                 }
+                    //                Navigator.push(
+                    // context,
+                    // MaterialPageRoute(builder: (context) => SuccessScreen()),
+                    // );
+                    //  setState(() {
+                    //                 showSpinner = true;
+                    //               });
+                    //               try {
+                    //                 final newUser =
+                    //                 await _auth.createUserWithEmailAndPassword(
+                    //                     email: email, password: password);
+                    //                 if (newUser != null) {
+                    //                   Navigator.push(
+                    //                       context,
+                    //                       MaterialPageRoute(
+                    //                           builder: (context) => SuccessScreen()));
+                    //                 }
 
-        //                 setState(() {
-        //                   showSpinner = false;
-        //                 });
-        //               } catch (e) {
-        //                 print(e);
-        //               }
+                    //                 setState(() {
+                    //                   showSpinner = false;
+                    //                 });
+                    //               } catch (e) {
+                    //                 print(e);
+                    //               }
                   },
                   clipBehavior: Clip.hardEdge,
                   child: Container(
