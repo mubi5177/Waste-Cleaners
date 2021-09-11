@@ -7,6 +7,7 @@ import 'package:waste_cleaners/services/auth_services.dart';
 import 'package:waste_cleaners/views/login.dart';
 import 'package:provider/provider.dart';
 import 'package:waste_cleaners/views/success.dart';
+ 
 
 class SignUp extends StatefulWidget {
   @override
@@ -14,6 +15,9 @@ class SignUp extends StatefulWidget {
 }
 
 class _SignUpState extends State<SignUp> {
+   
+   
+  
   bool showSpinner = false;
   final _auth = FirebaseAuth.instance;
 
@@ -235,7 +239,8 @@ class _SignUpState extends State<SignUp> {
                       final String firstName = firstNameController.text.trim();
                       final String lastName = lastNameController.text.trim();
                       final String email = emailController.text.trim();
-                      final String password = passwordController.text.trim();
+                     final String password = passwordController.text.trim();
+                     
                     
                       // // setState(() {
                       // //   showSpinner = true;
@@ -280,8 +285,8 @@ class _SignUpState extends State<SignUp> {
                                       showSpinner = true;
                                     });
                                     try {
-                                      final newUser =
-                                      await _auth.createUserWithEmailAndPassword(
+                                      
+                                    await _auth.createUserWithEmailAndPassword(
                                           email: email, password: password).then((value) async {
                              
           
@@ -293,7 +298,7 @@ class _SignUpState extends State<SignUp> {
                               'firstname': firstName,
                               'lastname': lastName,
                               'email': email,
-                              'password': password,
+                              // 'password': password,
                             });
                           });
                                       if (user != null) {
@@ -306,8 +311,8 @@ class _SignUpState extends State<SignUp> {
                                       setState(() {
                                         showSpinner = false;
                                       });
-                                    } catch (e) {
-                                      print(e);
+                                    } on FirebaseAuthException catch (e) {
+                                      print(e.message);
                                     }
                     },
                     clipBehavior: Clip.hardEdge,
@@ -360,4 +365,7 @@ class _SignUpState extends State<SignUp> {
       ),
     );
   }
+    
+ 
 }
+ 
