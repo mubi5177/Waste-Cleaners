@@ -97,7 +97,7 @@ class _SuccessScreenState extends State<SuccessScreen> {
                   alignment: Alignment.center,
                   height: 60,
                   width: 280,
-                  child: Text("Let's Roll!"),
+                  child: Text("Logout!"),
                 )),
         ],
       ),

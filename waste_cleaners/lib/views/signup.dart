@@ -7,6 +7,7 @@ import 'package:waste_cleaners/services/auth_services.dart';
 import 'package:waste_cleaners/views/login.dart';
 import 'package:provider/provider.dart';
 import 'package:waste_cleaners/views/success.dart';
+import 'package:waste_cleaners/views/verifyemail.dart';
 
 class SignUp extends StatefulWidget {
   @override
@@ -332,7 +333,7 @@ class _SignUpState extends State<SignUp> {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => SuccessScreen()));
+                                      builder: (context) => VerifyEmail()));
                             }
 
                             setState(() {
