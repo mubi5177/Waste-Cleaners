@@ -330,16 +330,24 @@ class _SignUpState extends State<SignUp> {
                               });
                             });
                             if (user != null) {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => VerifyEmail()));
+                                showModalBottomSheet(
+                                context: context,
+                                isScrollControlled: true,
+                                backgroundColor: Colors.transparent,
+                                builder: (context) {
+                                  return VerifyEmail();
+                                },
+                              );
                             }
 
                             setState(() {
                               showSpinner = false;
                             });
                           } on FirebaseAuthException catch (e) {
+                            setState(() {
+                              showSpinner = false;
+                            });
+                            _showDialog("${e.message}");
                             print(e.message);
                           }
                         }
@@ -395,4 +403,29 @@ class _SignUpState extends State<SignUp> {
       ),
     );
   }
+  void _showDialog(String msg) {
+    // flutter defined function
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        // return object of type Dialog
+        return AlertDialog(
+          title: new Text("Error!"),
+          content: new Text("$msg"),
+          actions: <Widget>[
+            // usually buttons at the bottom of the dialog
+            new FlatButton(
+              child: new Text("Close"),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
 }
+
+
+

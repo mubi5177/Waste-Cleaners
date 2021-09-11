@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 import 'package:waste_cleaners/controller/controllers.dart';
 import 'package:waste_cleaners/services/auth_services.dart';
@@ -189,37 +190,26 @@ class _LoginState extends State<Login> {
                             showSpinner = true;
                           });
                           try {
+                             User cureentuser = FirebaseAuth.instance.currentUser;
                             final user = await _auth.signInWithEmailAndPassword(
                                 email: email, password: password);
 
-                            if (user != null) {
+                            if (user != null && cureentuser.emailVerified) {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
                                       builder: (context) => SuccessScreen()));
                             } else {
-                              AlertDialog(
-                                title: const Text('AlertDialog Title'),
-                                content: const Text('AlertDialog description'),
-                                actions: <Widget>[
-                                  TextButton(
-                                    onPressed: () =>
-                                        Navigator.pop(context, 'Cancel'),
-                                    child: const Text('Cancel'),
-                                  ),
-                                  TextButton(
-                                    onPressed: () =>
-                                        Navigator.pop(context, 'OK'),
-                                    child: const Text('OK'),
-                                  ),
-                                ],
-                              );
+                             
+                          
                             }
 
-                            setState(() {
+                           
+                          } on FirebaseAuthException catch (e) {
+                             setState(() {
                               showSpinner = false;
                             });
-                          } on FirebaseAuthException catch (e) {
+                               _showDialog("${e.message}");
                             print(e.message);
                           }
                         }
@@ -273,6 +263,28 @@ class _LoginState extends State<Login> {
           ),
         ),
       ),
+    );
+  }
+  void _showDialog(String msg) {
+    // flutter defined function
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        // return object of type Dialog
+        return AlertDialog(
+          title: new Text("Error!"),
+          content: new Text("$msg"),
+          actions: <Widget>[
+            // usually buttons at the bottom of the dialog
+            new FlatButton(
+              child: new Text("Close"),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
     );
   }
 }
