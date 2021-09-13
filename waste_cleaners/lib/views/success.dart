@@ -1,10 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:confetti/confetti.dart';
+import 'package:waste_cleaners/views/dashboard.dart';
 import 'dart:math';
-
-import 'package:waste_cleaners/views/welcome.dart';
 
 class SuccessScreen extends StatefulWidget {
   @override
@@ -87,7 +85,7 @@ class _SuccessScreenState extends State<SuccessScreen> {
                   
                    Navigator.push(
     context,
-    MaterialPageRoute(builder: (context) => Welcome()),
+    MaterialPageRoute(builder: (context) => Dashboard()),
   );
                 },
                 clipBehavior: Clip.hardEdge,
@@ -97,7 +95,7 @@ class _SuccessScreenState extends State<SuccessScreen> {
                   alignment: Alignment.center,
                   height: 60,
                   width: 280,
-                  child: Text("Logout!"),
+                  child: Text("Let's Roll!"),
                 )),
         ],
       ),
