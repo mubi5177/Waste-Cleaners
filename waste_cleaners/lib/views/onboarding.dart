@@ -28,7 +28,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
     );
   }
 
-  Widget _buildImage(String assetName, [double width = 350]) {
+  Widget _buildImage(String assetName, [double width = 250]) {
     return Image.asset('$assetName', width: width);
   }
 
@@ -56,36 +56,36 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
           ),
         ),
       ),
-      globalFooter: SizedBox(
-        width: double.infinity,
-        height: 60,
-        child: ElevatedButton(
-          child: const Text(
-            'Let\s go right away!',
-            style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
-          ),
-          onPressed: () => _onIntroEnd(context),
-        ),
-      ),
+      // globalFooter: SizedBox(
+      //   width: double.infinity,
+      //   height: 60,
+      //   child: ElevatedButton(
+      //     child: const Text(
+      //       'Let\s go right away!',
+      //       style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
+      //     ),
+      //     onPressed: () => _onIntroEnd(context),
+      //   ),
+      // ),
       pages: [
         PageViewModel(
-          title: "Fractional shares",
+          title: "Lorem ipsum dolor",
           body:
-              "Instead of having to buy an entire share, invest any amount you want.",
+              "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
           image: _buildImage('assets/images/wclogo.png'),
           decoration: pageDecoration,
         ),
         PageViewModel(
-          title: "Learn as you go",
+          title: "Lorem ipsum dolor",
           body:
-              "Download the Stockpile app and master the market with our mini-lesson.",
+              "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
           image: _buildImage('assets/images/wclogo.png'),
           decoration: pageDecoration,
         ),
         PageViewModel(
-          title: "Kids and teens",
+          title: "Lorem ipsum dolor",
           body:
-              "Kids and teens can track their stocks 24/7 and place trades that you approve.",
+              "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
           image: _buildImage('assets/images/wclogo.png'),
           decoration: pageDecoration,
         ),
@@ -102,8 +102,8 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
         //   ),
         // ),
         PageViewModel(
-          title: "Another title page",
-          body: "Another beautiful body text for this example onboarding",
+          title: "Lorem ipsum dolor",
+          body: "Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor",
           image: _buildImage('assets/images/wclogo.png'),
           footer: ElevatedButton(
             onPressed: () {
@@ -114,7 +114,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
               style: TextStyle(color: Colors.white),
             ),
             style: ElevatedButton.styleFrom(
-              primary: Colors.lightBlue,
+              primary: Colors.green,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(8.0),
               ),
@@ -122,25 +122,25 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
           ),
           decoration: pageDecoration,
         ),
-        PageViewModel(
-          title: "Title of last page - reversed",
-          bodyWidget: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: const [
-              Text("Click on ", style: bodyStyle),
-              Icon(Icons.edit),
-              Text(" to edit a post", style: bodyStyle),
-            ],
-          ),
-          decoration: pageDecoration.copyWith(
-            bodyFlex: 2,
-            imageFlex: 4,
-            bodyAlignment: Alignment.bottomCenter,
-            imageAlignment: Alignment.topCenter,
-          ),
-          image: _buildImage('assets/images/wclogo.png'),
-          reverse: true,
-        ),
+        // PageViewModel(
+        //   title: "Title of last page - reversed",
+        //   bodyWidget: Row(r
+        //     mainAxisAlignment: MainAxisAlignment.center,
+        //     children: const [
+        //       Text("Click on ", style: bodyStyle),
+        //       Icon(Icons.edit),
+        //       Text(" to edit a post", style: bodyStyle),
+        //     ],
+        //   ),
+        //   decoration: pageDecoration.copyWith(
+        //     bodyFlex: 2,
+        //     imageFlex: 4,
+        //     bodyAlignment: Alignment.bottomCenter,
+        //     imageAlignment: Alignment.topCenter,
+        //   ),
+        //   image: _buildImage('assets/images/wclogo.png'),
+        //   reverse: true,
+        // ),
       ],
       onDone: () => _onIntroEnd(context),
       onSkip: () => _onIntroEnd(context), // You can override onSkip callback
@@ -166,7 +166,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
         ),
       ),
       dotsContainerDecorator: const ShapeDecoration(
-        color: Colors.black87,
+        color: Colors.white,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(8.0)),
         ),

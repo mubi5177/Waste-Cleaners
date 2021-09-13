@@ -40,7 +40,7 @@ dependencies:
   
   
 
-dev_dependencies:
+dev_dependencies: 
   
   flutter_test:
     sdk: flutter
@@ -51,6 +51,7 @@ dev_dependencies:
 flutter_native_splash:
   image: assets/images/logo.png
   color: "#fafafa"
+  
 
 flutter_icons:
   android: true
