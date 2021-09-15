@@ -83,7 +83,7 @@ class _SuccessScreenState extends State<SuccessScreen> {
                 onPressed: ()async{
               await FirebaseAuth.instance.signOut();
                   
-                   Navigator.push(
+                   Navigator.pushReplacement(
     context,
     MaterialPageRoute(builder: (context) => Dashboard()),
   );

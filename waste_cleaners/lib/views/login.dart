@@ -195,7 +195,7 @@ class _LoginState extends State<Login> {
                                 email: email, password: password);
 
                             if (user != null && cureentuser.emailVerified) {
-                              Navigator.push(
+                              Navigator.pushReplacement(
                                   context,
                                   MaterialPageRoute(
                                       builder: (context) => SuccessScreen()));

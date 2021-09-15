@@ -116,7 +116,7 @@ class _VerifyEmailState extends State<VerifyEmail> {
     if (user.emailVerified) {
       timer.cancel();
 
-      Navigator.push(
+      Navigator.pushReplacement(
           context, MaterialPageRoute(builder: (context) => SuccessScreen()));
     }
   }
