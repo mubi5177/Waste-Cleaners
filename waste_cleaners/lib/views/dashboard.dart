@@ -448,8 +448,14 @@ Widget Recommended(){
                                     Row(
                                       mainAxisAlignment: MainAxisAlignment.center,
                                       children: [
-                                      Text("Jack Deo",style: TextStyle(fontWeight: FontWeight.bold),)
-                                    ],)
+                                      Text("Jack Deo",style: TextStyle(fontSize:15,fontWeight: FontWeight.bold),)
+                                    ],),
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      children: [
+                                      Text("Lorem",style: TextStyle(fontSize:12,fontWeight: FontWeight.bold,color: Colors.grey.shade400),)
+                                    ],),
+                                     
 
                                   ],
                                 )
