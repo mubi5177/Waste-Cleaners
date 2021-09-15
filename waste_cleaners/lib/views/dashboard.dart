@@ -435,10 +435,10 @@ Widget Recommended(){
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(top:120.0,),
+                      padding: const EdgeInsets.only(top:120.0,left:2),
                       child: Container(
                                 height: 80,
-                                width: 150,
+                                width: 145,
                                 decoration:BoxDecoration(
                                   color: Colors.white,
                                   borderRadius:BorderRadius.circular(25)
