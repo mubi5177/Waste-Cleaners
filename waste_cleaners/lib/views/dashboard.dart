@@ -10,6 +10,8 @@ class Dashboard extends StatefulWidget {
 
 class _DashboardState extends State<Dashboard> {
    int _selectedItemIndex = 0;
+     bool isPressed=false;
+     bool _isPressed=false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -305,67 +307,8 @@ class _DashboardState extends State<Dashboard> {
       ),
     );
   }
-}
+  Widget Recommended(){
 
-
-
-Widget Categories(){
-  return Container(
-            child: Column(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Container(
-                    height: 105,
-                    width: 90,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
-                      color: Color.fromRGBO(244, 245, 247, 1),
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.all(10.0),
-                      child: Column(
-                        children: [
-                          GestureDetector(
-                            onTap: () {
-                           
-                            },
-                            child: Container(
-                              height: 60,
-                              width: 60,
-                              alignment: Alignment.center,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(12),
-                                color: Colors.white
-                              ),
-                              child: ClipRRect(
-                                borderRadius: BorderRadius.circular(12),
-                                child: Image.asset("assets/images/logo.png",fit: BoxFit.cover,),
-                              ),
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(5.0),
-                            child: Text(
-                              "Waste",
-                              overflow: TextOverflow.ellipsis,
-                              maxLines: 1,
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                  fontWeight: FontWeight.w600, fontSize: 12),
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          );
-}
-
-Widget Recommended(){
   return Container(
             child: Column(
               children: [
@@ -434,6 +377,29 @@ Widget Recommended(){
                         ),
                       ),
                     ),
+                             Padding(
+                      padding: const EdgeInsets.only(top:20.0,left:100),
+                      child: Container(
+                        alignment: Alignment.center,
+                                height: 30,
+                                width: 30,
+                                decoration:BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius:BorderRadius.circular(25)
+                                ),
+                                child:InkWell(
+                                onTap:(){
+                                  setState((){
+                                      isPressed= true;
+                                  
+                                    
+                                  });
+
+                                  },
+                                  child: Icon(Icons.favorite,size:18,color:(isPressed)? Colors.green
+                        : Colors.grey))
+                              ),
+                    ),
                     Padding(
                       padding: const EdgeInsets.only(top:120.0,left:2),
                       child: Container(
@@ -477,3 +443,63 @@ Widget Recommended(){
           );
 }
  
+}
+
+
+
+Widget Categories(){
+  return Container(
+            child: Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Container(
+                    height: 105,
+                    width: 90,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      color: Color.fromRGBO(244, 245, 247, 1),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: Column(
+                        children: [
+                          GestureDetector(
+                            onTap: () {
+                           
+                            },
+                            child: Container(
+                              height: 60,
+                              width: 60,
+                              alignment: Alignment.center,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(12),
+                                color: Colors.white
+                              ),
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(12),
+                                child: Image.asset("assets/images/logo.png",fit: BoxFit.cover,),
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(5.0),
+                            child: Text(
+                              "Waste",
+                              overflow: TextOverflow.ellipsis,
+                              maxLines: 1,
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w600, fontSize: 12),
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          );
+}
+
