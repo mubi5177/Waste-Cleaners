@@ -3,6 +3,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:waste_cleaners/views/allcategory.dart';
+import 'package:sticky_headers/sticky_headers.dart';
+import 'package:waste_cleaners/views/search.dart';
 
 class Dashboard extends StatefulWidget {
   @override
@@ -47,67 +49,88 @@ class _DashboardState extends State<Dashboard> {
           color: Colors.white,
           height: MediaQuery.of(context).size.height,
           width: MediaQuery.of(context).size.width,
-          child: Padding(
-            padding: const EdgeInsets.all(15.0),
-            child: SingleChildScrollView(
-              child: Column(children: [
-                Padding(
-                  padding: const EdgeInsets.only(top: 5.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Container(
-                        clipBehavior: Clip.hardEdge,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(30),
-                        ),
-                        height: 40,
-                        width: 40,
-                        child: Image.network(
-                            "https://www.kindpng.com/picc/m/22-223941_transparent-avatar-png-male-avatar-icon-transparent-png.png"),
+          child: SingleChildScrollView(
+            child: Column(children: [
+              Padding(
+                padding: const EdgeInsets.only(top: 5.0,left: 12),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Container(
+                      clipBehavior: Clip.hardEdge,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(30),
                       ),
-                      Container(
-                        height: 50,
-                        width: 50,
-                        child: Icon(Icons.notifications_active_outlined),
-                      ),
-                    ],
-                  ),
+                      height: 40,
+                      width: 40,
+                      child: Image.network(
+                          "https://www.kindpng.com/picc/m/22-223941_transparent-avatar-png-male-avatar-icon-transparent-png.png"),
+                    ),
+                    Container(
+                      height: 50,
+                      width: 50,
+                      child: Icon(Icons.notifications_active_outlined),
+                    ),
+                  ],
                 ),
-                Padding(
-                    padding: const EdgeInsets.all(12.0),
-                    child: Text.rich(
-                      TextSpan(
-                        text: '', // default text style
-                        children: [
-                          TextSpan(
-                              text: ' Find the ',
+              ),
+              Padding(
+                  padding: const EdgeInsets.all(12.0),
+                  child: Text.rich(
+                    TextSpan(
+                      text: '', // default text style
+                      children: [
+                        TextSpan(
+                            text: ' Find the ',
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 35,
+                                color: Colors.green)),
+                        TextSpan(
+                            text: 'Best ',
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 35,
+                                color: Colors.black)),
+                        WidgetSpan(
+                            child: Padding(
+                          padding: const EdgeInsets.only(left: 5.0),
+                          child: Text('Services',
                               style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   fontSize: 35,
                                   color: Colors.green)),
-                          TextSpan(
-                              text: 'Best ',
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 35,
-                                  color: Colors.black)),
-                          WidgetSpan(
-                              child: Padding(
-                            padding: const EdgeInsets.only(left: 5.0),
-                            child: Text('Services',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 35,
-                                    color: Colors.green)),
-                          )),
-                        ],
-                      ),
-                    )),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Container(
+                        )),
+                      ],
+                    ),
+                  )),
+              StickyHeader(
+                header: Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.only(bottomLeft: Radius.circular(20),bottomRight: Radius.circular(20)),
+                       boxShadow: <BoxShadow>[
+            BoxShadow(
+              color: Colors.grey[500],
+              blurRadius: 3.0,
+              spreadRadius: -5,
+              offset: Offset(-1, 5),
+            ),
+          ],
+          color: Colors.white,
+
+                  ),
+                  alignment: Alignment.center,
+                 
+                  height: 65,
+                  child: Padding(
+                    padding: const EdgeInsets.only(left:25.0,right:25),
                     child: TextFormField(
+                      onTap:(){
+ Navigator.push(
+    context,
+    MaterialPageRoute(builder: (context) => SearchItems()),
+  );
+                      },
                       onChanged: (value) {
                         //Do something with the user input.
                       },
@@ -142,136 +165,273 @@ class _DashboardState extends State<Dashboard> {
                     ),
                   ),
                 ),
-                Container(
-                  margin: EdgeInsets.all(10),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(20),
-                    child: Container(
-                      color: Colors.grey.shade100,
-                      height: 200.0,
-                      width: MediaQuery.of(context).size.width,
-                      child: Carousel(
-                        boxFit: BoxFit.cover,
-                        autoplay: true,
-                        animationCurve: Curves.fastOutSlowIn,
-                        animationDuration: Duration(milliseconds: 1000),
-                        dotSize: 6.0,
-                        dotIncreasedColor: Colors.white,
-                        dotBgColor: Colors.transparent,
-                        dotPosition: DotPosition.bottomCenter,
-                        dotVerticalPadding: 5.0,
-                        showIndicator: true,
-                        indicatorBgPadding: 5.0,
-                        images: [
-                          AssetImage('assets/images/logo.png'),
-                          AssetImage('assets/images/logo.png'),
-                          AssetImage('assets/images/logo.png'),
+                content:   Column(children: [
+                  Container(
+                margin: EdgeInsets.all(10),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(20),
+                  child: Container(
+                    color: Colors.grey.shade100,
+                    height: 200.0,
+                    width: MediaQuery.of(context).size.width,
+                    child: Carousel(
+                      boxFit: BoxFit.cover,
+                      autoplay: true,
+                      animationCurve: Curves.fastOutSlowIn,
+                      animationDuration: Duration(milliseconds: 1000),
+                      dotSize: 6.0,
+                      dotIncreasedColor: Colors.white,
+                      dotBgColor: Colors.transparent,
+                      dotPosition: DotPosition.bottomCenter,
+                      dotVerticalPadding: 5.0,
+                      showIndicator: true,
+                      indicatorBgPadding: 5.0,
+                      images: [
+                       NetworkImage('https://images.pexels.com/photos/7512888/pexels-photo-7512888.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500'),
+                        NetworkImage('https://images.pexels.com/photos/7512951/pexels-photo-7512951.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500'),
+                         NetworkImage('https://images.pexels.com/photos/5591833/pexels-photo-5591833.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500'),
+                          NetworkImage("https://images.pexels.com/photos/5591636/pexels-photo-5591636.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"),
+                          NetworkImage("https://images.pexels.com/photos/4108715/pexels-photo-4108715.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"),
+                           
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 12.0, bottom: 5,right:12),
+                child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text("Category",
+                          style: TextStyle(
+                              fontSize: 17, fontWeight: FontWeight.bold)),
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => AllCategories()),
+                          );
+                        },
+                        child: Text("View all",
+                            style: TextStyle(
+                                fontSize: 14,
+                                color: Colors.green,
+                                fontWeight: FontWeight.bold)),
+                      )
+                    ]),
+              ),
+              Container(
+                width: MediaQuery.of(context).size.width,
+                margin: EdgeInsets.all(10),
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: [Colors.green.shade200, Colors.white],
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                  ),
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(20),
+                  ),
+                  boxShadow: <BoxShadow>[
+                    BoxShadow(
+                      color: Colors.grey[300],
+                      blurRadius: 3.0,
+                      offset: Offset(0.0, 0.5),
+                    ),
+                  ],
+                ),
+                child: Column(
+                  children: [
+                    SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      physics: BouncingScrollPhysics(),
+                      child: Row(
+                        children: [
+                          Categories("https://images.pexels.com/photos/5591636/pexels-photo-5591636.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"),
+                          Categories("https://images.pexels.com/photos/4108715/pexels-photo-4108715.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"),
+                          Categories("https://images.pexels.com/photos/4684372/pexels-photo-4684372.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"),
+                          Categories("https://images.pexels.com/photos/3987142/pexels-photo-3987142.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"),
+                          Categories("https://images.pexels.com/photos/4239091/pexels-photo-4239091.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"),
+                          Categories("https://images.pexels.com/photos/4353608/pexels-photo-4353608.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"),
+                          Categories("https://images.pexels.com/photos/4099469/pexels-photo-4099469.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"),
+                          Categories("https://images.pexels.com/photos/3951389/pexels-photo-3951389.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"),
                         ],
                       ),
                     ),
-                  ),
+                  ],
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 12.0, bottom: 5),
-                  child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text("Category",
-                            style: TextStyle(
-                                fontSize: 14, fontWeight: FontWeight.bold)),
-                        GestureDetector(
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => AllCategories()),
-                            );
-                          },
-                          child: Text("View all",
-                              style: TextStyle(
-                                  fontSize: 12,
-                                  color: Colors.green,
-                                  fontWeight: FontWeight.bold)),
-                        )
-                      ]),
-                ),
-                Container(
-                  width: MediaQuery.of(context).size.width,
-                  margin: EdgeInsets.all(10),
-                  decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                      colors: [Colors.green.shade200, Colors.white],
-                      begin: Alignment.topLeft,
-                      end: Alignment.bottomRight,
-                    ),
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(20),
-                    ),
-                    boxShadow: <BoxShadow>[
-                      BoxShadow(
-                        color: Colors.grey[300],
-                        blurRadius: 3.0,
-                        offset: Offset(0.0, 0.5),
-                      ),
-                    ],
-                  ),
-                  child: Column(
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 12.0, bottom: 5,right:12),
+                child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      SingleChildScrollView(
-                        scrollDirection: Axis.horizontal,
-                        physics: BouncingScrollPhysics(),
-                        child: Row(
-                          children: [
-                            Categories(),
-                            Categories(),
-                            Categories(),
-                            Categories(),
-                            Categories(),
-                            Categories(),
-                            Categories(),
-                            Categories(),
-                          ],
-                        ),
-                      ),
-                    ],
+                      Text("Recommended",
+                          style: TextStyle(
+                              fontSize: 17, fontWeight: FontWeight.bold)),
+                      Text("View all",
+                          style: TextStyle(
+                              fontSize: 14,
+                              color: Colors.green,
+                              fontWeight: FontWeight.bold))
+                    ]),
+              ),
+              Column(children: [
+                SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    physics: BouncingScrollPhysics(),
+                    child: Row(children: [
+                      Recommended("https://images.pexels.com/photos/2726111/pexels-photo-2726111.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"),
+                      Recommended("https://images.pexels.com/photos/697509/pexels-photo-697509.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"),
+                      Recommended("https://images.pexels.com/photos/1382731/pexels-photo-1382731.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"),
+                    Recommended("https://images.pexels.com/photos/2726111/pexels-photo-2726111.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"),
+                      Recommended("https://images.pexels.com/photos/4063530/pexels-photo-4063530.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"),
+                      Recommended("https://images.pexels.com/photos/4063856/pexels-photo-4063856.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"),
+                     Recommended("https://images.pexels.com/photos/2726111/pexels-photo-2726111.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"),
+                      Recommended("https://images.pexels.com/photos/1680172/pexels-photo-1680172.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"),
+                     Recommended("https://images.pexels.com/photos/2726111/pexels-photo-2726111.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"),
+                      Recommended("https://images.pexels.com/photos/2364306/pexels-photo-2364306.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"),
+                     Recommended("https://images.pexels.com/photos/2726111/pexels-photo-2726111.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"),
+                      Recommended("https://images.pexels.com/photos/1930621/pexels-photo-1930621.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"),
+                    ]))
+              ]),
+                Container(
+                margin: EdgeInsets.all(10),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(20),
+                  child: Container(
+                    color: Colors.grey.shade100,
+                    height: 200.0,
+                    width: MediaQuery.of(context).size.width,
+                    child: Carousel(
+                      boxFit: BoxFit.cover,
+                      autoplay: true,
+                      animationCurve: Curves.fastOutSlowIn,
+                      animationDuration: Duration(milliseconds: 1000),
+                      dotSize: 6.0,
+                      dotIncreasedColor: Colors.white,
+                      dotBgColor: Colors.transparent,
+                      dotPosition: DotPosition.bottomCenter,
+                      dotVerticalPadding: 5.0,
+                      showIndicator: true,
+                      indicatorBgPadding: 5.0,
+                      images: [
+                       NetworkImage('https://images.pexels.com/photos/7512888/pexels-photo-7512888.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500'),
+                        NetworkImage('https://images.pexels.com/photos/7512951/pexels-photo-7512951.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500'),
+                         NetworkImage('https://images.pexels.com/photos/5591833/pexels-photo-5591833.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500'),
+                          NetworkImage("https://images.pexels.com/photos/5591636/pexels-photo-5591636.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"),
+                          NetworkImage("https://images.pexels.com/photos/4108715/pexels-photo-4108715.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"),
+                           
+                      ],
+                    ),
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 12.0, bottom: 5),
-                  child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text("Recommended",
-                            style: TextStyle(
-                                fontSize: 14, fontWeight: FontWeight.bold)),
-                        Text("View all",
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 12.0, bottom: 5),
+                child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text("Category",
+                          style: TextStyle(
+                              fontSize: 14, fontWeight: FontWeight.bold)),
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => AllCategories()),
+                          );
+                        },
+                        child: Text("View all",
                             style: TextStyle(
                                 fontSize: 12,
                                 color: Colors.green,
-                                fontWeight: FontWeight.bold))
-                      ]),
+                                fontWeight: FontWeight.bold)),
+                      )
+                    ]),
+              ),
+              Container(
+                width: MediaQuery.of(context).size.width,
+                margin: EdgeInsets.all(10),
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: [Colors.green.shade200, Colors.white],
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                  ),
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(20),
+                  ),
+                  boxShadow: <BoxShadow>[
+                    BoxShadow(
+                      color: Colors.grey[300],
+                      blurRadius: 3.0,
+                      offset: Offset(0.0, 0.5),
+                    ),
+                  ],
                 ),
-                Column(children: [
-                  SingleChildScrollView(
+                child: Column(
+                  children: [
+                    SingleChildScrollView(
                       scrollDirection: Axis.horizontal,
                       physics: BouncingScrollPhysics(),
-                      child: Row(children: [
-                        Recommended(),
-                        Recommended(),
-                        Recommended(),
-                        Recommended(),
-                        Recommended(),
-                        Recommended(),
-                        Recommended(),
-                        Recommended(),
-                        Recommended(),
-                        Recommended(),
-                        Recommended(),
-                        Recommended(),
-                      ]))
-                ])
-              ]),
-            ),
+                      child: Row(
+                        children: [
+                          Categories("https://images.pexels.com/photos/5591636/pexels-photo-5591636.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"),
+                          Categories("https://images.pexels.com/photos/4108715/pexels-photo-4108715.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"),
+                          Categories("https://images.pexels.com/photos/4684372/pexels-photo-4684372.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"),
+                          Categories("https://images.pexels.com/photos/3987142/pexels-photo-3987142.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"),
+                          Categories("https://images.pexels.com/photos/4239091/pexels-photo-4239091.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"),
+                          Categories("https://images.pexels.com/photos/4353608/pexels-photo-4353608.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"),
+                          Categories("https://images.pexels.com/photos/4099469/pexels-photo-4099469.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"),
+                          Categories("https://images.pexels.com/photos/3951389/pexels-photo-3951389.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 12.0, bottom: 5),
+                child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text("Recommended",
+                          style: TextStyle(
+                              fontSize: 14, fontWeight: FontWeight.bold)),
+                      Text("View all",
+                          style: TextStyle(
+                              fontSize: 12,
+                              color: Colors.green,
+                              fontWeight: FontWeight.bold))
+                    ]),
+              ),
+              Column(children: [
+                SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    physics: BouncingScrollPhysics(),
+                    child: Row(children: [
+                      Recommended("https://images.pexels.com/photos/2726111/pexels-photo-2726111.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"),
+                      Recommended("https://images.pexels.com/photos/697509/pexels-photo-697509.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"),
+                      Recommended("https://images.pexels.com/photos/1382731/pexels-photo-1382731.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"),
+                    Recommended("https://images.pexels.com/photos/2726111/pexels-photo-2726111.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"),
+                      Recommended("https://images.pexels.com/photos/4063530/pexels-photo-4063530.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"),
+                      Recommended("https://images.pexels.com/photos/4063856/pexels-photo-4063856.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"),
+                     Recommended("https://images.pexels.com/photos/2726111/pexels-photo-2726111.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"),
+                      Recommended("https://images.pexels.com/photos/1680172/pexels-photo-1680172.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"),
+                     Recommended("https://images.pexels.com/photos/2726111/pexels-photo-2726111.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"),
+                      Recommended("https://images.pexels.com/photos/2364306/pexels-photo-2364306.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"),
+                     Recommended("https://images.pexels.com/photos/2726111/pexels-photo-2726111.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"),
+                      Recommended("https://images.pexels.com/photos/1930621/pexels-photo-1930621.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"),
+                    ]))
+              ])
+             ],),
+              ),
+           
+            ]),
           ),
         ),
       ),
@@ -308,7 +468,8 @@ class _DashboardState extends State<Dashboard> {
     );
   }
 
-  Widget Recommended() {
+  Widget Recommended(var img) {
+    
     return Container(
       child: Column(
         children: [
@@ -337,8 +498,8 @@ class _DashboardState extends State<Dashboard> {
                               color: Colors.white),
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(12),
-                            child: Image.asset(
-                              "assets/images/logo.png",
+                            child: Image.network(
+                              "$img",
                               fit: BoxFit.cover,
                             ),
                           ),
@@ -415,7 +576,7 @@ class _DashboardState extends State<Dashboard> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(top: 120.0, left: 2),
+                padding: const EdgeInsets.only(top: 115.0, left: 2,right:2),
                 child: Container(
                     height: 80,
                     width: 145,
@@ -490,7 +651,7 @@ class _DashboardState extends State<Dashboard> {
   }
 }
 
-Widget Categories() {
+Widget Categories(var img) {
   return Container(
     child: Column(
       children: [
@@ -518,8 +679,8 @@ Widget Categories() {
                           color: Colors.white),
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(12),
-                        child: Image.asset(
-                          "assets/images/logo.png",
+                        child: Image.network(
+                          "$img",
                           fit: BoxFit.cover,
                         ),
                       ),

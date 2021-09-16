@@ -21,13 +21,13 @@ class _AllCategoriesState extends State<AllCategories> {
             end: Alignment.bottomRight,
           ),
           borderRadius: BorderRadius.circular(20),
-          // boxShadow: <BoxShadow>[
-          //   BoxShadow(
-          //     color: Colors.grey[100],
-          //     blurRadius: 1.0,
-          //     offset: Offset(0.0, 0.1),
-          //   ),
-          // ],
+          boxShadow: <BoxShadow>[
+            BoxShadow(
+              color: Colors.grey[300],
+              blurRadius: 3.0,
+              offset: Offset(0.0, 0.5),
+            ),
+          ],
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -58,9 +58,9 @@ class _AllCategoriesState extends State<AllCategories> {
                           boxShadow: [
                             BoxShadow(
                               color: Colors.black,
-                              spreadRadius: 2,
-                              blurRadius: 3,
-                              offset: Offset(0, 2), // changes position of shadow
+                              spreadRadius: 1,
+                              blurRadius: 1,
+                              offset: Offset(0, 0.5), // changes position of shadow
                             ),
                           ],
                           color: Colors.white,
@@ -80,38 +80,33 @@ class _AllCategoriesState extends State<AllCategories> {
                 shrinkWrap: true,
                 physics: NeverScrollableScrollPhysics(),
                 children: [
-                  Recommended(),
-                  Recommended(),
-                  Recommended(),
-                  Recommended(),
-                    Recommended(),
-                  Recommended(),
-                  Recommended(),
-                  Recommended(),
-                   Recommended(),
-                  Recommended(),
-                  Recommended(),
-                  Recommended(),
-                    Recommended(),
-                  Recommended(),
-                  Recommended(),
-                  Recommended(),
-                    Recommended(),
-                  Recommended(),
-                  Recommended(),
-                  Recommended(),
-                    Recommended(),
-                  Recommended(),
-                  Recommended(),
-                  Recommended(),
-                   Recommended(),
-                  Recommended(),
-                  Recommended(),
-                  Recommended(),
-                    Recommended(),
-                  Recommended(),
-                  Recommended(),
-                  Recommended(),
+                            Categories("https://images.pexels.com/photos/5591636/pexels-photo-5591636.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"),
+                            Categories("https://images.pexels.com/photos/4108715/pexels-photo-4108715.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"),
+                            Categories("https://images.pexels.com/photos/4684372/pexels-photo-4684372.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"),
+                            Categories("https://images.pexels.com/photos/3987142/pexels-photo-3987142.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"),
+                            Categories("https://images.pexels.com/photos/4239091/pexels-photo-4239091.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"),
+                            Categories("https://images.pexels.com/photos/4353608/pexels-photo-4353608.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"),
+                            Categories("https://images.pexels.com/photos/4099469/pexels-photo-4099469.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"),
+                            Categories("https://images.pexels.com/photos/3951389/pexels-photo-3951389.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"),
+                          
+                            Categories("https://images.pexels.com/photos/5591636/pexels-photo-5591636.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"),
+                            Categories("https://images.pexels.com/photos/4108715/pexels-photo-4108715.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"),
+                            Categories("https://images.pexels.com/photos/4684372/pexels-photo-4684372.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"),
+                            Categories("https://images.pexels.com/photos/3987142/pexels-photo-3987142.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"),
+                            Categories("https://images.pexels.com/photos/4239091/pexels-photo-4239091.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"),
+                            Categories("https://images.pexels.com/photos/4353608/pexels-photo-4353608.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"),
+                            Categories("https://images.pexels.com/photos/4099469/pexels-photo-4099469.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"),
+                            Categories("https://images.pexels.com/photos/3951389/pexels-photo-3951389.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"),
+                          
+                            Categories("https://images.pexels.com/photos/5591636/pexels-photo-5591636.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"),
+                            Categories("https://images.pexels.com/photos/4108715/pexels-photo-4108715.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"),
+                            Categories("https://images.pexels.com/photos/4684372/pexels-photo-4684372.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"),
+                            Categories("https://images.pexels.com/photos/3987142/pexels-photo-3987142.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"),
+                            Categories("https://images.pexels.com/photos/4239091/pexels-photo-4239091.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"),
+                            Categories("https://images.pexels.com/photos/4353608/pexels-photo-4353608.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"),
+                            Categories("https://images.pexels.com/photos/4099469/pexels-photo-4099469.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"),
+                            Categories("https://images.pexels.com/photos/3951389/pexels-photo-3951389.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"),
+                          
                 ],
               ),
                 ],
@@ -123,7 +118,7 @@ class _AllCategoriesState extends State<AllCategories> {
       
     );
   }
-   Widget Recommended() {
+   Widget Categories(var img) {
     return Container(
       child: Column(
         children: [
@@ -152,8 +147,8 @@ class _AllCategoriesState extends State<AllCategories> {
                               color: Colors.white),
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(12),
-                            child: Image.asset(
-                              "assets/images/logo.png",
+                            child: Image.network(
+                              "$img",
                               fit: BoxFit.cover,
                             ),
                           ),
@@ -170,134 +165,13 @@ class _AllCategoriesState extends State<AllCategories> {
 
                               fontWeight: FontWeight.bold, fontSize: 20),
                         ),
-                        //     child: Container(
-                        //     height: 60,
-                        //     width: 100,
-                        //     decoration:BoxDecoration(
-                        //       color: Colors.white,
-                        //       borderRadius:BorderRadius.circular(25)
-                        //     )
-                        //   ),
-                        //   // child: Text(
-                        //   //   "Waste",
-                        //   //   overflow: TextOverflow.ellipsis,
-                        //   //   maxLines: 1,
-                        //   //   textAlign: TextAlign.center,
-                        //   //   style: TextStyle(
-                        //   //       fontWeight: FontWeight.w600, fontSize: 12),
-                        //   // ),
-                        // )
+                        
                       )
                     ],
                   ),
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.only(top: 20.0, left: 90),
-                child: Container(
-                  alignment: Alignment.center,
-                  height: 30,
-                  width: 30,
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(25)),
-                  child: RatingBar.builder(
-                    initialRating: 0,
-                    minRating: 0,
-                    itemSize: 20,
-                    direction: Axis.horizontal,
-                    allowHalfRating: false,
-                    itemCount: 1,
-                    itemPadding: EdgeInsets.symmetric(horizontal: 4.0),
-                    itemBuilder: (context, _) => Icon(
-                      Icons.favorite,
-                      size: 14,
-                      color: Colors.green,
-                    ),
-                    onRatingUpdate: (rating) {
-                      print(rating);
-                    },
-                  ),
-                  //         child:InkWell(
-                  //         onTap:(){
-                  //           setState((){
-                  //               isPressed= true;
-
-                  //           });
-
-                  //           },
-                  //           child: Icon(Icons.favorite,size:18,color:(isPressed)? Colors.green
-                  // : Colors.grey))
-                ),
-              ),
-              // Padding(
-              //   padding: const EdgeInsets.only(top: 120.0, left: 2),
-              //   child: Container(
-              //       height: 80,
-              //       width: 145,
-              //       decoration: BoxDecoration(
-              //           color: Colors.white,
-              //           borderRadius: BorderRadius.circular(25)),
-              //       child: Column(
-              //         children: [
-              //           Row(
-              //             mainAxisAlignment: MainAxisAlignment.center,
-              //             children: [
-              //               Text(
-              //                 "Jack Deo",
-              //                 style: TextStyle(
-              //                     fontSize: 15, fontWeight: FontWeight.bold),
-              //               )
-              //             ],
-              //           ),
-              //           Row(
-              //             mainAxisAlignment: MainAxisAlignment.center,
-              //             children: [
-              //               Text(
-              //                 "Lorem",
-              //                 style: TextStyle(
-              //                     fontSize: 12,
-              //                     fontWeight: FontWeight.bold,
-              //                     color: Colors.grey.shade400),
-              //               )
-              //             ],
-              //           ),
-              //           Container(
-              //             width: 120,
-              //             child: RatingBar.builder(
-              //               initialRating: 5,
-              //               minRating: 5,
-              //               itemSize: 15,
-              //               direction: Axis.horizontal,
-              //               allowHalfRating: true,
-              //               itemCount: 5,
-              //               itemPadding: EdgeInsets.symmetric(horizontal: 4.0),
-              //               itemBuilder: (context, _) => Icon(
-              //                 Icons.star,
-              //                 size: 14,
-              //                 color: Colors.amber,
-              //               ),
-              //               onRatingUpdate: (rating) {
-              //                 print(rating);
-              //               },
-              //             ),
-              //           ),
-              //           Padding(
-              //             padding: const EdgeInsets.only(top: 5.0),
-              //             child: Text("20\$/hr",
-              //                 style: TextStyle(fontWeight: FontWeight.bold)),
-              //           )
-              //         ],
-              //       )),
-              // ),
-              // child: Text(
-              //   "Waste",
-              //   overflow: TextOverflow.ellipsis,
-              //   maxLines: 1,
-              //   textAlign: TextAlign.center,
-              //   style: TextStyle(
-              //       fontWeight: FontWeight.w600, fontSize: 12),
-              // ),
+               
             ]),
           ),
         ],
