@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:waste_cleaners/views/allcategory.dart';
 import 'package:sticky_headers/sticky_headers.dart';
+import 'package:waste_cleaners/views/notifications.dart';
 import 'package:waste_cleaners/views/profile.dart';
 import 'package:waste_cleaners/views/search.dart';
 import 'package:waste_cleaners/views/whishlist.dart';
@@ -50,34 +51,73 @@ class _DashboardState extends State<Dashboard> {
           ],
         ),
       ),
-      body: SafeArea(
+      body:  dashboard ? Dashboard()
+                   : search
+                    ? SearchItems()
+                    : whislist
+                        ? Wishlist()
+                        : profile
+                            ? Profile()
+                            : Container(),
+    );
+  }
+Widget Dashboard(){
+  return SafeArea(
         child: Container(
           color: Colors.white,
           height: MediaQuery.of(context).size.height,
           width: MediaQuery.of(context).size.width,
           child: SingleChildScrollView(
-            child: dashboard
-                ? Column(
+            child: Column(
                     children: [
                       Padding(
                         padding: const EdgeInsets.only(top: 5.0, left: 12),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Container(
-                              clipBehavior: Clip.hardEdge,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(30),
+                            InkWell(
+                              onTap:(){
+Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => Profile()),
+                                );
+                              },
+                              child: Container(
+                                clipBehavior: Clip.hardEdge,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(30),
+                                ),
+                                height: 40,
+                                width: 40,
+                                child: Image.network(
+                                    "https://images.pexels.com/photos/2726111/pexels-photo-2726111.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"),
                               ),
-                              height: 40,
-                              width: 40,
-                              child: Image.network(
-                                  "https://images.pexels.com/photos/1930621/pexels-photo-1930621.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"),
                             ),
-                            Container(
-                              height: 50,
-                              width: 50,
-                              child: Icon(Icons.notifications_active_outlined),
+                            InkWell(
+                              onTap:(){
+                                  showModalBottomSheet(
+                                context: context,
+                                isScrollControlled: true,
+                                builder: (context) => SingleChildScrollView(
+                                  child: Container(
+                                    padding: EdgeInsets.only(
+                                        bottom: MediaQuery.of(context)
+                                            .viewInsets
+                                            .bottom),
+                                    child: NotificationList(),
+                                  ),
+                                ),
+                              );
+                              },
+
+                              child: Container(
+                                height: 50,
+                                width: 50,
+                                child: Image(
+                                            image: AssetImage('assets/images/notifications.png'),
+                                          ),
+                              ),
                             ),
                           ],
                         ),
@@ -512,19 +552,11 @@ class _DashboardState extends State<Dashboard> {
                       ),
                     ],
                   )
-                : search
-                    ? SearchItems()
-                    : whislist
-                        ? Wishlist()
-                        : profile
-                            ? Profile()
-                            : Container(),
+                
           ),
         ),
-      ),
-    );
-  }
-
+      );
+}
   Widget buildNavBarItem(IconData icon, int index) {
     return GestureDetector(
       onTap: () {

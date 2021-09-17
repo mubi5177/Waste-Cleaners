@@ -13,32 +13,55 @@ class _AllCategoriesState extends State<AllCategories> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        bottomNavigationBar: Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            colors: [Colors.green.shade200, Colors.white],
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
+        appBar: AppBar(
+          elevation: 0,
+          centerTitle: true,
+          backgroundColor: Colors.white,
+          title: Text(
+            'All Categories',
+            style: TextStyle(
+                color: Colors.black, fontWeight: FontWeight.bold, fontSize: 20),
           ),
-          borderRadius: BorderRadius.circular(20),
-          boxShadow: <BoxShadow>[
-            BoxShadow(
-              color: Colors.grey[300],
-              blurRadius: 3.0,
-              offset: Offset(0.0, 0.5),
+          actions: [
+            GestureDetector(
+              onTap: () {
+                
+              },
+              child: Image(
+                image: AssetImage('assets/images/notifications.png'),
+              ),
+            ),
+            SizedBox(
+              width: 10,
             ),
           ],
         ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: <Widget>[
-            buildNavBarItem(Icons.home_outlined, 0),
-            buildNavBarItem(Icons.search, 1),
-            buildNavBarItem(Icons.favorite_outline, 2),
-            buildNavBarItem(Icons.person_outline_outlined, 3),
-          ],
-        ),
-      ),
+      //   bottomNavigationBar: Container(
+      //   decoration: BoxDecoration(
+      //     gradient: LinearGradient(
+      //       colors: [Colors.green.shade200, Colors.white],
+      //       begin: Alignment.topLeft,
+      //       end: Alignment.bottomRight,
+      //     ),
+      //     borderRadius: BorderRadius.circular(20),
+      //     boxShadow: <BoxShadow>[
+      //       BoxShadow(
+      //         color: Colors.grey[300],
+      //         blurRadius: 3.0,
+      //         offset: Offset(0.0, 0.5),
+      //       ),
+      //     ],
+      //   ),
+      //   child: Row(
+      //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      //     children: <Widget>[
+      //       buildNavBarItem(Icons.home_outlined, 0),
+      //       buildNavBarItem(Icons.search, 1),
+      //       buildNavBarItem(Icons.favorite_outline, 2),
+      //       buildNavBarItem(Icons.person_outline_outlined, 3),
+      //     ],
+      //   ),
+      // ),
       body:SafeArea(
         child: Container(
           height: MediaQuery.of(context).size.height,
@@ -48,29 +71,29 @@ class _AllCategoriesState extends State<AllCategories> {
             child: SingleChildScrollView(
               child: Column(
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.all(12.0),
-                    child: Container(
-                      alignment: Alignment.center,
-                      height:70,
-                      width:300,
-                        decoration: BoxDecoration(
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.black,
-                              spreadRadius: 1,
-                              blurRadius: 1,
-                              offset: Offset(0, 0.5), // changes position of shadow
-                            ),
-                          ],
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(25)),
-                          child: Text("All Categories",style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 25
-                          ),),
-                    ),
-                  ),
+                  // Padding(
+                  //   padding: const EdgeInsets.all(12.0),
+                  //   child: Container(
+                  //     alignment: Alignment.center,
+                  //     height:70,
+                  //     width:300,
+                  //       decoration: BoxDecoration(
+                  //         boxShadow: [
+                  //           BoxShadow(
+                  //             color: Colors.black,
+                  //             spreadRadius: 1,
+                  //             blurRadius: 1,
+                  //             offset: Offset(0, 0.5), // changes position of shadow
+                  //           ),
+                  //         ],
+                  //         color: Colors.white,
+                  //         borderRadius: BorderRadius.circular(25)),
+                  //         child: Text("All Categories",style: TextStyle(
+                  //           fontWeight: FontWeight.bold,
+                  //           fontSize: 25
+                  //         ),),
+                  //   ),
+                  // ),
                GridView.count(
                 primary: false,
                 padding: const EdgeInsets.all(8),

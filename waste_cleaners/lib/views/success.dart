@@ -80,8 +80,8 @@ class _SuccessScreenState extends State<SuccessScreen> {
               child: Image.asset('assets/gif/giphy.gif')),
                  SizedBox(height: 30),
             ElevatedButton(
-                onPressed: ()async{
-              await FirebaseAuth.instance.signOut();
+                onPressed: () {
+           
                   
                    Navigator.pushReplacement(
     context,
