@@ -1,8 +1,6 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/painting.dart';
-import 'package:waste_cleaners/views/login.dart';
+import 'package:flutter/painting.dart'; 
 import 'package:waste_cleaners/views/welcome.dart';
  
 
