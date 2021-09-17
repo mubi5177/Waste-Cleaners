@@ -4,10 +4,13 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 import 'package:waste_cleaners/controller/controllers.dart';
 import 'package:waste_cleaners/services/auth_services.dart';
-import 'package:waste_cleaners/views/forgotPassword.dart';
-import 'package:waste_cleaners/views/signup.dart';
+ 
 import 'package:provider/provider.dart';
-import 'package:waste_cleaners/views/success.dart';
+import 'package:waste_cleaners/views/signup/signup.dart';
+import 'package:waste_cleaners/views/signup/success.dart';
+
+import 'forgotPassword.dart';
+ 
 
 class Login extends StatefulWidget {
   @override

@@ -1,7 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/painting.dart'; 
-import 'package:waste_cleaners/views/welcome.dart';
+import 'package:flutter/painting.dart';
+import 'package:waste_cleaners/views/splash/welcome.dart'; 
+ 
  
 
 class Profile extends StatefulWidget {

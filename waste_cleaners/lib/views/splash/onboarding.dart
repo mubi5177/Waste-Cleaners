@@ -1,7 +1,8 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:introduction_screen/introduction_screen.dart';
-import 'package:waste_cleaners/views/welcome.dart';
+import 'package:waste_cleaners/views/splash/welcome.dart';
+ 
 
 
 class OnBoardingPage extends StatefulWidget {

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:waste_cleaners/views/resetMessage.dart';
-import 'package:waste_cleaners/views/signup.dart';
+import 'package:waste_cleaners/views/login/resetMessage.dart';
+ 
 
 class ForgotPassword extends StatefulWidget {
   @override

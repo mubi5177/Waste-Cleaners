@@ -3,8 +3,9 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:waste_cleaners/views/login.dart';
-import 'package:waste_cleaners/views/success.dart';
+import 'package:waste_cleaners/views/login/login.dart';
+import 'package:waste_cleaners/views/signup/success.dart';
+ 
 
 class VerifyEmail extends StatefulWidget {
   @override

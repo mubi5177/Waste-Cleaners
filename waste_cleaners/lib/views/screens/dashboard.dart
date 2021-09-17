@@ -2,12 +2,14 @@ import 'package:carousel_pro/carousel_pro.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-import 'package:waste_cleaners/views/allcategory.dart';
+ 
 import 'package:sticky_headers/sticky_headers.dart';
-import 'package:waste_cleaners/views/notifications.dart';
-import 'package:waste_cleaners/views/profile.dart';
-import 'package:waste_cleaners/views/search.dart';
-import 'package:waste_cleaners/views/whishlist.dart';
+import 'package:waste_cleaners/views/screens/allcategory.dart';
+import 'package:waste_cleaners/views/screens/notifications.dart';
+import 'package:waste_cleaners/views/screens/profile.dart';
+import 'package:waste_cleaners/views/screens/search.dart';
+import 'package:waste_cleaners/views/screens/whishlist.dart';
+ 
 
 class Dashboard extends StatefulWidget {
   @override

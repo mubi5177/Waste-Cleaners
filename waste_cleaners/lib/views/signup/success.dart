@@ -1,8 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:confetti/confetti.dart';
-import 'package:waste_cleaners/views/dashboard.dart';
+ 
 import 'dart:math';
+
+import 'package:waste_cleaners/views/screens/dashboard.dart';
 
 class SuccessScreen extends StatefulWidget {
   @override

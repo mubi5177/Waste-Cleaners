@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:waste_cleaners/views/login.dart';
-import 'package:waste_cleaners/views/signup.dart';
+import 'package:waste_cleaners/views/login/login.dart';
+import 'package:waste_cleaners/views/signup/signup.dart';
+ 
 
 class Welcome extends StatefulWidget {
   @override

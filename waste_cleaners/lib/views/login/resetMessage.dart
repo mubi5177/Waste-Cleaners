@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:waste_cleaners/views/login.dart';
+
+import 'login.dart';
+ 
 class ResetMessage extends StatefulWidget {
 
 
